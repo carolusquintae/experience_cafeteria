@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cliente_preferencias_user,cliente.preferencias.user,model_cliente_preferencias,group_experience_user,1,1,1,0
+access_cliente_preferencias_manager,cliente.preferencias.manager,model_cliente_preferencias,group_experience_manager,1,1,1,1
+access_encuesta_satisfaccion_user,encuesta.satisfaccion.user,model_encuesta_satisfaccion,group_experience_user,1,1,1,0
+access_encuesta_satisfaccion_manager,encuesta.satisfaccion.manager,model_encuesta_satisfaccion,group_experience_manager,1,1,1,1
+access_queja_sugerencia_user,queja.sugerencia.user,model_queja_sugerencia,group_experience_user,1,1,1,0
+access_queja_sugerencia_manager,queja.sugerencia.manager,model_queja_sugerencia,group_experience_manager,1,1,1,1
+access_seguimiento_cliente_user,seguimiento.cliente.user,model_seguimiento_cliente,group_experience_user,1,1,1,0
+access_seguimiento_cliente_manager,seguimiento.cliente.manager,model_seguimiento_cliente,group_experience_manager,1,1,1,1
+access_product_alergenos_user,product.alergenos.user,model_product_alergenos,group_experience_user,1,0,0,0
+access_product_alergenos_manager,product.alergenos.manager,model_product_alergenos,group_experience_manager,1,1,1,1

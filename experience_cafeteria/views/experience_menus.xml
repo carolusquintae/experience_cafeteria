@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ACCIONES DE VENTANA -->
+    <record id="action_cliente_preferencias" model="ir.actions.act_window">
+        <field name="name">Perfiles de Clientes</field>
+        <field name="res_model">cliente.preferencias</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_encuesta_satisfaccion" model="ir.actions.act_window">
+        <field name="name">Encuestas de Satisfacción</field>
+        <field name="res_model">encuesta.satisfaccion</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_queja_sugerencia" model="ir.actions.act_window">
+        <field name="name">Quejas y Sugerencias</field>
+        <field name="res_model">queja.sugerencia</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_queja_sugerencia_kanban" model="ir.actions.act_window">
+        <field name="name">Quejas - Kanban</field>
+        <field name="res_model">queja.sugerencia</field>
+        <field name="view_mode">kanban</field>
+    </record>
+
+    <record id="action_queja_pendientes" model="ir.actions.act_window">
+        <field name="name">Quejas Pendientes</field>
+        <field name="res_model">queja.sugerencia</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('estado','=','pendiente')]</field>
+    </record>
+
+    <record id="action_seguimiento_cliente" model="ir.actions.act_window">
+        <field name="name">Acciones con Clientes</field>
+        <field name="res_model">seguimiento.cliente</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_product_alergenos" model="ir.actions.act_window">
+        <field name="name">Alérgenos</field>
+        <field name="res_model">product.alergenos</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_informe_satisfaccion" model="ir.actions.act_window">
+        <field name="name">Informe de Satisfacción</field>
+        <field name="res_model">encuesta.satisfaccion</field>
+        <field name="view_mode">graph</field>
+    </record>
+
+    <!-- MENÚ PRINCIPAL -->
+    <menuitem id="menu_experience_cafeteria" name="Experiencia Cliente" sequence="10"/>
+    
+    <!-- SUBMENÚS DE PREFERENCIAS -->
+    <menuitem id="menu_preferencias" name="Preferencias Clientes" parent="menu_experience_cafeteria" sequence="10"/>
+    <menuitem id="menu_preferencias_clientes" name="Perfiles de Clientes" parent="menu_preferencias" 
+              action="action_cliente_preferencias" sequence="10"/>
+    <menuitem id="menu_alergenos" name="Alérgenos" parent="menu_preferencias" 
+              action="action_product_alergenos" sequence="20"/>
+    
+    <!-- SUBMENÚS DE ENCUESTAS -->
+    <menuitem id="menu_encuestas" name="Encuestas" parent="menu_experience_cafeteria" sequence="20"/>
+    <menuitem id="menu_encuestas_satisfaccion" name="Encuestas de Satisfacción" parent="menu_encuestas" 
+              action="action_encuesta_satisfaccion" sequence="10"/>
+    
+    <!-- SUBMENÚS DE QUEJAS -->
+    <menuitem id="menu_quejas" name="Quejas y Sugerencias" parent="menu_experience_cafeteria" sequence="30"/>
+    <menuitem id="menu_quejas_list" name="Todas" parent="menu_quejas" 
+              action="action_queja_sugerencia" sequence="10"/>
+    <menuitem id="menu_quejas_kanban" name="Vista Kanban" parent="menu_quejas" 
+              action="action_queja_sugerencia_kanban" sequence="20"/>
+    <menuitem id="menu_quejas_pendientes" name="Pendientes" parent="menu_quejas" 
+              action="action_queja_pendientes" sequence="30"/>
+    
+    <!-- SUBMENÚS DE SEGUIMIENTO -->
+    <menuitem id="menu_seguimiento" name="Seguimiento" parent="menu_experience_cafeteria" sequence="40"/>
+    <menuitem id="menu_seguimiento_acciones" name="Acciones con Clientes" parent="menu_seguimiento" 
+              action="action_seguimiento_cliente" sequence="10"/>
+    
+    <!-- SUBMENÚS DE INFORMES -->
+    <menuitem id="menu_informes_experience" name="Informes" parent="menu_experience_cafeteria" sequence="50"/>
+    <menuitem id="menu_informe_satisfaccion" name="Informe de Satisfacción" parent="menu_informes_experience" 
+              action="action_informe_satisfaccion" sequence="10"/>
+</odoo>

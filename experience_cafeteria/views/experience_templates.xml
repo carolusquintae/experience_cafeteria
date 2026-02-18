@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_client_preferences" name="Preferencias del Cliente">
+        <div class="client-preferences">
+            <t t-if="preferences">
+                <h4>Preferencias del cliente</h4>
+                <ul>
+                    <li t-if="preferences.bebida_favorita">
+                        <strong>Bebida favorita:</strong> <t t-esc="preferences.bebida_favorita.name"/>
+                    </li>
+                    <li t-if="preferences.tipo_cafe">
+                        <strong>Tipo de café:</strong> <t t-esc="preferences.tipo_cafe"/>
+                    </li>
+                    <li t-if="preferences.temperatura_preferida">
+                        <strong>Temperatura:</strong> <t t-esc="preferences.temperatura_preferida"/>
+                    </li>
+                    <li t-if="preferences.tipo_leche">
+                        <strong>Tipo de leche:</strong> <t t-esc="preferences.tipo_leche"/>
+                    </li>
+                    <li t-if="preferences.alergenos">
+                        <strong>Alérgenos:</strong> <t t-esc="preferences.alergenos"/>
+                    </li>
+                </ul>
+            </t>
+        </div>
+    </template>
+</odoo>

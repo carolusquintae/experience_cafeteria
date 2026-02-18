@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Datos demo de alérgenos -->
+        <record id="alergeno_gluten" model="product.alergenos">
+            <field name="name">Gluten</field>
+            <field name="codigo">GLU</field>
+            <field name="descripcion">Presente en trigo, cebada, centeno</field>
+        </record>
+        
+        <record id="alergeno_lactosa" model="product.alergenos">
+            <field name="name">Lactosa</field>
+            <field name="codigo">LAC</field>
+            <field name="descripcion">Proteína de la leche</field>
+        </record>
+        
+        <record id="alergeno_huevo" model="product.alergenos">
+            <field name="name">Huevo</field>
+            <field name="codigo">HUE</field>
+            <field name="descripcion">Presente en tortillas, mayonesa</field>
+        </record>
+        
+        <record id="alergeno_frutos_secos" model="product.alergenos">
+            <field name="name">Frutos secos</field>
+            <field name="codigo">FRU</field>
+            <field name="descripcion">Almendras, nueces, avellanas</field>
+        </record>
+        
+        <record id="alergeno_marisco" model="product.alergenos">
+            <field name="name">Marisco</field>
+            <field name="codigo">MAR</field>
+            <field name="descripcion">Crustáceos y moluscos</field>
+        </record>
+        
+        <record id="alergeno_soja" model="product.alergenos">
+            <field name="name">Soja</field>
+            <field name="codigo">SOJ</field>
+            <field name="descripcion">Presente en leches vegetales, salsas</field>
+        </record>
+    </data>
+</odoo>
