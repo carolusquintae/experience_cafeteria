@@ -97,7 +97,6 @@ class EncuestaSatisfaccion(models.Model):
 
     cliente_id = fields.Many2one('res.partner', string='Cliente', required=True)
     pedido_id = fields.Many2one('pos.order', string='Pedido asociado')
-    mesa_id = fields.Many2one('mesa.restaurante', string='Mesa')
     fecha = fields.Datetime(string='Fecha', default=fields.Datetime.now)
     
     # Puntuaciones (1-5)

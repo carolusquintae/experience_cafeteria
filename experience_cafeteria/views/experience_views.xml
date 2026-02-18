@@ -83,7 +83,6 @@
                         <group>
                             <field name="cliente_id"/>
                             <field name="pedido_id"/>
-                            <field name="mesa_id"/>
                             <field name="fecha"/>
                         </group>
                         <group>
