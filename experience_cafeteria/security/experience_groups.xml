@@ -5,13 +5,13 @@
         <record id="group_experience_user" model="res.groups">
             <field name="name">Usuario de Experiencia</field>
             <field name="category_id" ref="base.module_category_hidden"/>
-            <field name="implied_ids" ref="base.group_user"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
         
         <record id="group_experience_manager" model="res.groups">
             <field name="name">Manager de Experiencia</field>
             <field name="category_id" ref="base.module_category_hidden"/>
-            <field name="implied_ids" ref="group_experience_user"/>
+            <field name="implied_ids" eval="[(4, ref('group_experience_user'))]"/>
         </record>
     </data>
 </odoo>
