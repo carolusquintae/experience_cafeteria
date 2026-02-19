@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <report
-        id="report_satisfaccion"
-        model="encuesta.satisfaccion"
-        string="Informe de Satisfacción"
-        report_type="qweb-pdf"
-        name="experience_cafeteria.report_satisfaccion_template"
-        file="experience_cafeteria.report_satisfaccion_template"
-        menu="True"
-    />
+    <record id="action_report_satisfaccion" model="ir.actions.report">
+        <field name="name">Informe de Satisfacción</field>
+        <field name="model">encuesta.satisfaccion</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">experience_cafeteria.report_satisfaccion_template</field>
+        <field name="report_file">experience_cafeteria.report_satisfaccion_template</field>
+        <field name="binding_model_id" ref="model_encuesta_satisfaccion"/>
+        <field name="binding_type">report</field>
+    </record>
 
     <template id="report_satisfaccion_template">
         <t t-call="web.html_container">

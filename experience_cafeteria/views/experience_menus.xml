@@ -4,19 +4,19 @@
     <record id="action_cliente_preferencias" model="ir.actions.act_window">
         <field name="name">Perfiles de Clientes</field>
         <field name="res_model">cliente.preferencias</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 
     <record id="action_encuesta_satisfaccion" model="ir.actions.act_window">
         <field name="name">Encuestas de Satisfacción</field>
         <field name="res_model">encuesta.satisfaccion</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 
     <record id="action_queja_sugerencia" model="ir.actions.act_window">
         <field name="name">Quejas y Sugerencias</field>
         <field name="res_model">queja.sugerencia</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 
     <record id="action_queja_sugerencia_kanban" model="ir.actions.act_window">
@@ -28,20 +28,20 @@
     <record id="action_queja_pendientes" model="ir.actions.act_window">
         <field name="name">Quejas Pendientes</field>
         <field name="res_model">queja.sugerencia</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="domain">[('estado','=','pendiente')]</field>
     </record>
 
     <record id="action_seguimiento_cliente" model="ir.actions.act_window">
         <field name="name">Acciones con Clientes</field>
         <field name="res_model">seguimiento.cliente</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 
     <record id="action_product_alergenos" model="ir.actions.act_window">
         <field name="name">Alérgenos</field>
         <field name="res_model">product.alergenos</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 
     <record id="action_informe_satisfaccion" model="ir.actions.act_window">
@@ -51,7 +51,7 @@
     </record>
 
     <!-- MENÚ PRINCIPAL -->
-    <menuitem id="menu_experience_cafeteria" name="Experiencia Cliente" sequence="10"/>
+    <menuitem id="menu_experience_cafeteria" name="Experiencia Cliente" sequence="10" groups="group_experience_user" web_icon="base,static/description/settings.png"/>
     
     <!-- SUBMENÚS DE PREFERENCIAS -->
     <menuitem id="menu_preferencias" name="Preferencias Clientes" parent="menu_experience_cafeteria" sequence="10"/>

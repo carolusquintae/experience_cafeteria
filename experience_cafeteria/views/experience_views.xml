@@ -5,14 +5,14 @@
         <field name="name">cliente.preferencias.tree</field>
         <field name="model">cliente.preferencias</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="cliente_id"/>
                 <field name="bebida_favorita"/>
                 <field name="tipo_cafe"/>
                 <field name="visitas_totales"/>
                 <field name="gasto_total" widget="monetary"/>
                 <field name="cliente_habitual" widget="boolean_toggle"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -62,14 +62,14 @@
         <field name="name">encuesta.satisfaccion.tree</field>
         <field name="model">encuesta.satisfaccion</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="fecha"/>
                 <field name="cliente_id"/>
                 <field name="puntuacion_general"/>
                 <field name="media_puntuacion"/>
                 <field name="nivel_satisfaccion" widget="badge"/>
                 <field name="volveria"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -111,12 +111,23 @@
         </field>
     </record>
 
+    <record id="view_encuesta_satisfaccion_graph" model="ir.ui.view">
+        <field name="name">encuesta.satisfaccion.graph</field>
+        <field name="model">encuesta.satisfaccion</field>
+        <field name="arch" type="xml">
+            <graph string="Análisis de Satisfacción" type="bar" sample="1">
+                <field name="fecha" interval="month"/>
+                <field name="media_puntuacion" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
     <!-- VISTAS DE QUEJAS -->
     <record id="view_queja_sugerencia_tree" model="ir.ui.view">
         <field name="name">queja.sugerencia.tree</field>
         <field name="model">queja.sugerencia</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="fecha"/>
                 <field name="cliente_id"/>
                 <field name="tipo"/>
@@ -124,7 +135,7 @@
                 <field name="prioridad" widget="badge"/>
                 <field name="estado" widget="badge"/>
                 <field name="responsable_id"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -134,7 +145,8 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <field name="estado" widget="statusbar"/>
+                    <button name="action_resolver" string="Resolver" type="object" class="oe_highlight" invisible="estado != 'pendiente'"/>
+                    <field name="estado" widget="statusbar" statusbar_visible="pendiente,en_proceso,resuelto,cerrado"/>
                 </header>
                 <sheet>
                     <group>
@@ -180,15 +192,15 @@
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">
                             <div class="o_kanban_record_header">
-                                <strong t-field="record.cliente_id"/>
-                                <span t-field="record.fecha" t-options='{"widget": "date"}'/>
+                                <strong><field name="cliente_id"/></strong>
+                                <span><field name="fecha"/></span>
                             </div>
                             <div class="o_kanban_record_content">
-                                <span t-esc="record.descripcion.value" t-options='{"widget": "text"}'/>
-                                <div class="mt-2">
-                                    <span t-field="record.tipo" t-options='{"widget": "badge"}'/>
-                                    <span t-field="record.prioridad" t-options='{"widget": "badge"}'/>
-                                    <span t-field="record.estado" t-options='{"widget": "badge"}'/>
+                                <field name="descripcion"/>
+                                <div class="mt-2 text-wrap">
+                                    <field name="tipo" widget="badge"/>
+                                    <field name="prioridad" widget="badge"/>
+                                    <field name="estado" widget="badge"/>
                                 </div>
                             </div>
                         </div>
@@ -203,13 +215,13 @@
         <field name="name">queja.sugerencia.search</field>
         <field name="model">queja.sugerencia</field>
         <field name="arch" type="xml">
-            <search>
+            <search string="Criterios de Búsqueda">
                 <field name="cliente_id"/>
                 <field name="descripcion"/>
-                <filter name="pendientes" string="Pendientes" domain="[('estado','=','pendiente')]"/>
-                <filter name="alta_prioridad" string="Prioridad Alta" domain="[('prioridad','=','alta')]"/>
-                <filter name="quejas" string="Quejas" domain="[('tipo','=','queja')]"/>
-                <group expand="0" string="Agrupar por">
+                <filter name="filter_pendientes" string="Pendientes" domain="[('estado','=','pendiente')]"/>
+                <filter name="filter_alta_prioridad" string="Prioridad Alta" domain="[('prioridad','=','alta')]"/>
+                <filter name="filter_quejas" string="Quejas" domain="[('tipo','=','queja')]"/>
+                <group>
                     <filter name="group_estado" string="Estado" context="{'group_by':'estado'}"/>
                     <filter name="group_prioridad" string="Prioridad" context="{'group_by':'prioridad'}"/>
                     <filter name="group_tipo" string="Tipo" context="{'group_by':'tipo'}"/>
@@ -223,13 +235,13 @@
         <field name="name">seguimiento.cliente.tree</field>
         <field name="model">seguimiento.cliente</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="fecha"/>
                 <field name="cliente_id"/>
                 <field name="tipo_accion"/>
                 <field name="empleado_id"/>
                 <field name="descripcion"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -265,11 +277,11 @@
         <field name="name">product.alergenos.tree</field>
         <field name="model">product.alergenos</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="name"/>
                 <field name="codigo"/>
                 <field name="descripcion"/>
-            </tree>
+            </list>
         </field>
     </record>
 

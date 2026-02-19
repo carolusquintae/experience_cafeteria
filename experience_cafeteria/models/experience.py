@@ -167,20 +167,22 @@ class EncuestaSatisfaccion(models.Model):
             else:
                 record.nivel_satisfaccion = 'alto'
     
-    @api.model
-    def create(self, vals):
-        res = super().create(vals)
-        # Si la puntuación es baja, crear automáticamente una queja/incidencia
-        if res.nivel_satisfaccion == 'bajo':
-            self.env['queja.sugerencia'].create({
-                'cliente_id': res.cliente_id.id,
-                'encuesta_id': res.id,
-                'tipo': 'queja',
-                'descripcion': res.comentario or 'Cliente insatisfecho (sin comentario)',
-                'prioridad': 'alta',
-                'estado': 'pendiente'
-            })
-        return res
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super().create(vals_list)
+        for res in records:
+            # Si la puntuación es baja, crear automáticamente una queja/incidencia
+            if res.nivel_satisfaccion == 'bajo':
+                self.env['queja.sugerencia'].create({
+                    'cliente_id': res.cliente_id.id,
+                    'encuesta_id': res.id,
+                    'tipo': 'queja',
+                    'categoria': 'otro',
+                    'descripcion': res.comentario or 'Cliente insatisfecho (sin comentario)',
+                    'prioridad': 'alta',
+                    'estado': 'pendiente'
+                })
+        return records
 
 
 class QuejaSugerencia(models.Model):

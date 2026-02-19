@@ -6,19 +6,19 @@
                 <h4>Preferencias del cliente</h4>
                 <ul>
                     <li t-if="preferences.bebida_favorita">
-                        <strong>Bebida favorita:</strong> <t t-esc="preferences.bebida_favorita.name"/>
+                        <strong>Bebida favorita:</strong> <t t-out="preferences.bebida_favorita.display_name"/>
                     </li>
                     <li t-if="preferences.tipo_cafe">
-                        <strong>Tipo de café:</strong> <t t-esc="preferences.tipo_cafe"/>
+                        <strong>Tipo de café:</strong> <t t-out="preferences.tipo_cafe"/>
                     </li>
                     <li t-if="preferences.temperatura_preferida">
-                        <strong>Temperatura:</strong> <t t-esc="preferences.temperatura_preferida"/>
+                        <strong>Temperatura:</strong> <t t-out="preferences.temperatura_preferida"/>
                     </li>
                     <li t-if="preferences.tipo_leche">
-                        <strong>Tipo de leche:</strong> <t t-esc="preferences.tipo_leche"/>
+                        <strong>Tipo de leche:</strong> <t t-out="preferences.tipo_leche"/>
                     </li>
                     <li t-if="preferences.alergenos">
-                        <strong>Alérgenos:</strong> <t t-esc="preferences.alergenos"/>
+                        <strong>Alérgenos:</strong> <t t-out="', '.join(preferences.alergenos.mapped('name'))"/>
                     </li>
                 </ul>
             </t>
