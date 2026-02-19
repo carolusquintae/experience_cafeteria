@@ -11,7 +11,7 @@
         - Historial de visitas y gasto por cliente
         - Sistema de feedback con código QR en ticket
     """,
-    'author': 'Carlos Torres,Ana Olmos - Cafetería La Esquina',
+    'author': 'Carlos Torres, Ana Olmos - Cafetería La Esquina',
     'website': 'https://localhost:8069',
     'category': 'Sales/Point of Sale',
     'depends': ['point_of_sale', 'crm', 'hr'],
@@ -27,5 +27,5 @@
     'demo': [],
     'installable': True,
     'application': True,
-    'auto_install': False,
+    'auto_install': True,
 }
